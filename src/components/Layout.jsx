@@ -2,8 +2,10 @@ import { Outlet, Link } from "react-router-dom";
 import Logo from "../images/logo.webp";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Layout = () => {
+  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
   const [formData, setFormData] = useState({
@@ -48,6 +50,10 @@ const Layout = () => {
     localStorage.removeItem("userId");
     setIsLoggedIn(false);
     setUserName("");
+
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
   };
 
   return (
